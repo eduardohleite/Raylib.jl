@@ -38,34 +38,128 @@ export blank
 export magenta
 export raywhite
 
-# functions.jl
+# core.jl
 export initwindow
-export settargetfps
 export windowshouldclose
-export begindrawing
-export clearbackground
-export drawtext
-export enddrawing
 export closewindow
-export iskeydown
-export drawcirclev
-export getmouseposition
-export ismousebuttonpressed
-export getmousewheelmove
-export drawrectangle
-export iskeypressed
+export iswindowready
+export iswindowfullscreen
+export iswindowhidden
+export iswindowminimized
+export iswindowmaximized
+export iswindowfocused
+export iswindowresized
+export iswindowstate
+export setwindowstate
+export clearwindowstate
+export togglefullscreen
+export maximizewindow
+export minimizewindow
+export restorewindow
+export setwindowtitle
+export setwindowposition
+export setwindowmonitor
+export setwindowminsize
+export setwindowsize
+export getscreenwidth
+export getscreenheight
+export getmonitorcount
+export getcurrentmonitor
+export getmonitorposition
+export getmonitorwidth
+export getmonitorheight
+export getmonitorphysicalwidth
+export getmonitorphysicalheight
+export getmonitorrefreshrate
+export getwindowposition
+export getwindowscaledpi
+export getmonitorname
+export setclipboardtext
+export getclipboardtext
+
+export showcursor
+export hidecursor
+export iscursorhidden
+export enablecursor
+export disablecursor
+export iscursoronscreen
+
+export clearbackground
+export begindrawing
+export enddrawing
 export beginmode2d
 export endmode2d
+export endtexturemode
+export endshadermode
+export beginblendmode
+export endblendmode
+export beginscissormode
+export endscissormode
+
+export getworldtoscreen2d
+export getscreentoworld2d
+
+export settargetfps
+export getfps
+export getframetime
+export gettime
+
+export getrandomvalue
+export takescreenshot
+export setconfigflags
+
+export openurl
+
+export iskeypressed
+export iskeydown
+export iskeyreleased
+export iskeyup
+export setexitkey
+export getkeypressed
+export getcharpressed
+
+export isgamepadavailable
+export isgamepadname
+export getgamepadname
+export isgamepadbuttonpressed
+export isgamepadbuttondown
+export isgamepadbuttonreleased
+export isgamepadbuttonup
+export getgamepadbuttonpressed
+export getgamepadaxiscount
+export getgamepadaxismovement
+export setgamepadmappings
+
+export ismousebuttonpressed
+export ismousebuttondown
+export ismousebuttonreleased
+export ismousebuttonup
+export getmousex
+export getmousey
+export getmouseposition
+export setmouseposition
+export setmouseoffset
+export setmousescale
+export getmousewheelmove
+export setmousecursor
+
+export setcamerapancontrol
+export setcameraaltcontrol
+export setcamesmoothzoomcontrol
+export setcameramovecontrols
+
+export drawtext
+export drawcirclev
+export drawrectangle
 export drawrectanglerec
 export drawline
 export fade
 export drawrectanglelines
-export getrandomvalue
 
 
 const libname = "libraylib.dylib"
 
 include("types.jl")
-include("functions.jl")
+include("core.jl")
 
 end # module
