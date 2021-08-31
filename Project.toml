@@ -1,0 +1,4 @@
+name = "Raylib"
+uuid = "0704de60-da64-4895-8ea1-e3f0700871eb"
+authors = ["Eduardo Henrique <eduardohleite@gmail.com>"]
+version = "0.1.0"
