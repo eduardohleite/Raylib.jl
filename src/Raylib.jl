@@ -6,9 +6,9 @@ export Color
 export Rectangle
 export Camera2D
 
-export Keys, keyright, keyleft, keyup, keydown, keya, keyr, key_s
-export MouseButtons, mousebuttonleft, mousebuttonright, mousebuttonmiddle, mousebuttonside,
-    mousebuttonextra, mousebuttonforward, mousebuttonback
+export Keys, key_right, key_left, key_up, key_down, key_a, key_r, key_s
+export MouseButtons, mousebutton_left, mousebutton_right, mousebutton_middle, mousebutton_side,
+    mousebutton_extra, mousebutton_forward, mousebutton_back
 
 export lightgray
 export gray

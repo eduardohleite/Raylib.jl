@@ -11,10 +11,10 @@ settargetfps(60)
 while !windowshouldclose()
     x, y = ballposition.x, ballposition.y
 
-    iskeydown(keyright) && (x += 2.)
-    iskeydown(keyleft) && (x -= 2.)
-    iskeydown(keyup) && (y += 2.)
-    iskeydown(keydown) && (y -= 2.)
+    iskeydown(key_right) && (x += 2.)
+    iskeydown(key_left) && (x -= 2.)
+    iskeydown(key_up) && (y += 2.)
+    iskeydown(key_down) && (y -= 2.)
 
     global ballposition = Vector2(x, y)
 

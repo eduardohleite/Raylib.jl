@@ -34,12 +34,12 @@ camera = Camera2D(Vector2(screenw / 2., screenh / 2.),
 settargetfps(60)
 
 while !windowshouldclose()
-    iskeydown(keyright) && (player.x += 2.)
-    iskeydown(keyleft) && (player.x -= 2.)
+    iskeydown(key_right) && (player.x += 2.)
+    iskeydown(key_left) && (player.x -= 2.)
 
     camera.target = Vector2(player.x + 20., player.y + 20.)
 
-    iskeydown(keya) && (camera.rotation -= 1.)
+    iskeydown(key_a) && (camera.rotation -= 1.)
     iskeydown(key_s) && (camera.rotation += 1.)
 
     camera.rotation > 40. && (camera.rotation = 40.)
@@ -50,7 +50,7 @@ while !windowshouldclose()
     camera.zoom > 3. && (camera.zoom = 3.)
     camera.zoom < .1 && (camera.zoom = .1)
 
-    if iskeypressed(keyr)
+    if iskeypressed(key_r)
         camera.zoom = 1.
         camera.rotation = 0.
     end

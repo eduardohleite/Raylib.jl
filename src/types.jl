@@ -53,22 +53,22 @@ const magenta = Color(255, 0, 255, 255)
 const raywhite = Color(245, 245, 245, 255)
 
 @enum Keys begin
-    keyright = 262
-    keyleft = 263
-    keyup = 264
-    keydown = 265
+    key_right = 262
+    key_left = 263
+    key_up = 264
+    key_down = 265
 
-    keya = 65
-    keyr = 82
+    key_a = 65
+    key_r = 82
     key_s = 83
 end
 
 @enum MouseButtons begin
-    mousebuttonleft = 0
-    mousebuttonright = 1
-    mousebuttonmiddle = 2
-    mousebuttonside = 3
-    mousebuttonextra = 4
-    mousebuttonforward = 5
-    mousebuttonback = 6
+    mousebutton_left = 0
+    mousebutton_right = 1
+    mousebutton_middle = 2
+    mousebutton_side = 3
+    mousebutton_extra = 4
+    mousebutton_forward = 5
+    mousebutton_back = 6
 end
