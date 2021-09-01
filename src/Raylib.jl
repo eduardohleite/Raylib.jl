@@ -155,14 +155,49 @@ export setcamesmoothzoomcontrol
 export setcameramovecontrols
 
 # shapes.jl
-export drawtext
-export drawcirclev
-export drawrectangle
-export drawrectanglerec
+export drawpixel
+export drawpixelv
 export drawline
+export drawlinev
+export drawlineex
+export drawlinebezier
+
+export drawlinebezierquad
+export drawcircle
+export drawcirclesector
+export drawcirclesectorlines
+export drawcirclegradient
+export drawcirclev
+export drawcirclelines
+export drawellipse
+export drawellipselines
+export drawring
+export drawringlines
+export drawrectangle
+export drawrectanglev
+export drawrectanglerec
+export drawrectanglepro
+export drawrectanglegradientv
+export drawrectanglegradienth
+export drawrectanglegradientex
 export drawrectanglelines
+export drawrectanglelinesex
+export drawrectanglerounded
+export drawrectangleroundedlines
+export drawtriangle
+export drawtrianglelines
+export drawpoly
+export drawpolylines
+export checkcollisionrecs
+export checkcollisioncircles
+export checkcollisioncirclerec
+export checkcollisionpointrec
+export checkcollisionpointcircle
+export checkcollisionpointtriangle
+export getcollisionrec
 
 export fade
+export drawtext
 
 
 const libname = "libraylib.dylib"

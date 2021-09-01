@@ -89,25 +89,94 @@ drawrectanglev(position::Vector2, size::Vector2, color::Color) =
 drawrectanglerec(rec::Rectangle, color::Color) =
     ccall((:DrawRectangleRec, libname), Cvoid, (Rectangle, Color), rec, color)
 
+# draw a color-filled rectangle with pro parameters
+drawrectanglepro(rec::Rectangle, origin::Vector2, rotation::Float64, color::Color) =
+    ccall((:DrawRectanglePro, libname), Cvoid, (Rectangle, Vector2, Cfloat, Color), rec, origin, rotation, color)
+
+# draw a vertical-gradient-filled rectangle
+drawrectanglegradientv(posx::Int, posy::Int, width::Int, height::Int, color1::Color, color2::Color) =
+    ccall((:DrawRectangleGradientV, libname), Cvoid, (Cint, Cint, Cint, Cint, Color, Color), posx, posy, width, height, color1, color2)
+
+# draw a horizontal-gradient-filled rectangle
+drawrectanglegradienth(posx::Int, posy::Int, width::Int, height::Int, color1::Color, color2::Color) =
+    ccall((:DrawRectangleGradientH, libname), Cvoid, (Cint, Cint, Cint, Cint, Color, Color), posx, posy, width, height, color1, color2)
+
+# draw a gradient-filled rectangle with custom vertex colors
+drawrectanglegradientex(rec::Rectangle, col1::Color, col2::Color, col3::Color, col4::Color) =
+    ccall((:DrawRectangleGradientEx, libname), Cvoid, (Rectangle, Color, Color, Color, Color), rec, col1, col2, col3, col4)
+
+# draw rectangle outline
 drawrectanglelines(posx::Int, posy::Int, width::Int, height::Int, color::Color) =
     ccall((:DrawRectangleLines, libname), Cvoid, (Cint, Cint, Cint, Cint, Color), posx, posy, width, height, color)
 
+# draw rectangle outline with extended parameters
+drawrectanglelinesex(rec::Rectangle, linethick::Int, color::Color) =
+    ccall((:DrawRectangleLinesEx, libname), Cvoid, (Rectangle, Cint, Color), rec, linethick, color)
 
-# void DrawRectanglePro(Rectangle rec, Vector2 origin, float rotation, Color color);                  // Draw a color-filled rectangle with pro parameters
-# void DrawRectangleGradientV(int posX, int posY, int width, int height, Color color1, Color color2); // Draw a vertical-gradient-filled rectangle
-# void DrawRectangleGradientH(int posX, int posY, int width, int height, Color color1, Color color2); // Draw a horizontal-gradient-filled rectangle
-# void DrawRectangleGradientEx(Rectangle rec, Color col1, Color col2, Color col3, Color col4);        // Draw a gradient-filled rectangle with custom vertex colors
-# void DrawRectangleLines(int posX, int posY, int width, int height, Color color);                    // Draw rectangle outline
-# void DrawRectangleLinesEx(Rectangle rec, int lineThick, Color color);                               // Draw rectangle outline with extended parameters
-# void DrawRectangleRounded(Rectangle rec, float roundness, int segments, Color color);               // Draw rectangle with rounded edges
-# void DrawRectangleRoundedLines(Rectangle rec, float roundness, int segments, int lineThick, Color color); // Draw rectangle with rounded edges outline
-# void DrawTriangle(Vector2 v1, Vector2 v2, Vector2 v3, Color color);                                 // Draw a color-filled triangle (vertex in counter-clockwise order!)
-# void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color);                            // Draw triangle outline (vertex in counter-clockwise order!)
-# void DrawTriangleFan(Vector2 *points, int pointsCount, Color color);                                // Draw a triangle fan defined by points (first vertex is the center)
-# void DrawTriangleStrip(Vector2 *points, int pointsCount, Color color);                              // Draw a triangle strip defined by points
-# void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color);                // Draw a regular polygon (Vector version)
-# void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);           // Draw a polygon outline of n sides
+# draw rectangle with rounded edges
+drawrectanglerounded(rec::Rectangle, roundness::Float64, segments::Int, color::Color) =
+    ccall((:DrawRectangleRounded, libname), Cvoid, (Rectangle, Cfloat, Cint, Color), rec, roundness, segments, color)
 
+# draw rectangle with rounded edges outline
+drawrectangleroundedlines(rec::Rectangle, roundness::Float64, segments::Int, linethick::Int, color::Color) =
+    ccall((:DrawRectangleRoundedLines, libname), Cvoid, (Rectangle, Cfloat, Cint, Cint, Color), rec, roundness, segments, linethick, color)
+    
+# draw a color-filled triangle (vertex in counter-clockwise order!)
+drawtriangle(v1::Vector2, v2::Vector2, v3::Vector2, color::Color) =
+    ccall((:DrawTriangle, libname), Cvoid, (Vector2, Vector2, Vector2, Color), v1, v2, v3, color)
+
+# draw triangle outline (vertex in counter-clockwise order!)
+drawtrianglelines(v1::Vector2, v2::Vector2, v3::Vector2, color::Color) =
+    ccall((:DrawTriangleLines, libname), Cvoid, (Vector2, Vector2, Vector2, Color), v1, v2, v3, color)
+
+# TODO: void DrawTriangleFan(Vector2 *points, int pointsCount, Color color);                                // Draw a triangle fan defined by points (first vertex is the center)
+# TODO: void DrawTriangleStrip(Vector2 *points, int pointsCount, Color color);                              // Draw a triangle strip defined by points
+    
+# draw regular polygon (Vector version)
+drawpoly(center::Vector2, sides::Int, radius::Float64, rotation::Float64, color::Color) =
+    ccall((:DrawTriangleLines, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Color), center, sides, radius, rotation, color)
+
+# draw a polygon outline of n sides
+drawpolylines(center::Vector2, sides::Int, radius::Float64, rotation::Float64, color::Color) =
+    ccall((:DrawTriangleLines, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Color), center, sides, radius, rotation, color)
+    
+
+# basic shapes collision detection functions 
+
+# check collision between two rectangles
+checkcollisionrecs(rec1::Rectangle, rec2::Rectangle)::Bool =
+    ccall((:CheckCollisionRecs, libname), Cint, (Rectangle, Rectangle), rec1, rec2)
+
+# check collision between two circles
+checkcollisioncircles(center1::Vector2, radius1::Float64, center2::Vector2, radius2::Float64)::Bool =
+    ccall((:CheckCollisionCircles, libname), Cint, (Vector2, Cfloat, Vector2, Cfloat), center1, radius1, center2, radius2)
+
+# check collision between circle and rectangle
+checkcollisioncirclerec(center::Vector2, radius::Float32, rec::Rectangle)::Bool =
+    ccall((:CheckCollisionCircleRec, libname), Cint, (Vector2, Cfloat, Rectangle), center, radius, rec)
+
+# check if point is inside rectangle
+checkcollisionpointrec(point::Vector2, rec::Rectangle)::Bool =
+    ccall((:CheckCollisionPointRec, libname), Cint, (Vector2, Rectangle), point, rec)
+
+# check if point is inside circle
+checkcollisionpointcircle(point::Vector2, center::Vector2, radius::Float64)::Bool =
+    ccall((:CheckCollisionPointCircle, libname), Cint, (Vector2, Vector2, Float64), point, center, radius)
+
+# check if point is inside triangle
+checkcollisionpointtriangle(point::Vector2, p1::Vector2, p2::Vector2, p3::Vector3)::Bool =
+    ccall((:CheckCollisionPointTriangle, libname), Cint, (Vector2, Vector2, Vector2, Vector2), point, p1, p2, p3)
+    
+# TODO: bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2 *collisionPoint); // Check the collision between two lines defined by two points each, returns collision point by reference
+
+# get collision rectangle for two rectangles collision
+getcollisionrec(rec1::Rectangle, rec2::Rectangle)::Rectangle =
+    ccall((:CheckCollisionRec, libname), Rectangle, (Rectangle, Rectangle), rec1, rec2)
+
+
+
+
+# -----
 
 drawtext(text::String, posx::Int, posy::Int, fontsize::Int, color::Color) =
     ccall((:DrawText, libname), Cvoid, (Cstring, Cint, Cint, Cint, Color), text, posx, posy, fontsize, color)
