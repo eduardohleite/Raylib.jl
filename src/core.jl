@@ -1,4 +1,3 @@
-
 # window-related functions
 
 # initialize window and OpenGL context
@@ -261,7 +260,11 @@ endscissormode() =
 
 # TODO: Ray GetMouseRay(Vector2 mousePosition, Camera camera);                  // Returns a ray trace from mouse position
 # TODO: Matrix GetCameraMatrix(Camera camera);                                  // Returns camera transform matrix (view matrix)
-# TODO: Matrix GetCameraMatrix2D(Camera2D camera);                              // Returns camera 2d transform matrix
+
+# returns camera 2d transform matrix
+getcameramatrix2d(camera::Camera2D)::Matrix =
+    ccall((:GetCameraMatrix2D, libname), Matrix, (Camera2D,), camera)
+
 # TODO: Vector2 GetWorldToScreen(Vector3 position, Camera camera);              // Returns the screen space position for a 3d world space position
 # TODO: Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); // Returns size position for a 3d world space position
 
@@ -535,23 +538,5 @@ setcameramovecontrols(frontkey::Int, backkey::Int, rightkey::Int, leftkey::Int, 
 
 # -----
 
-drawtext(text::String, posx::Int, posy::Int, fontsize::Int, color::Color) =
-    ccall((:DrawText, libname), Cvoid, (Cstring, Cint, Cint, Cint, Color), text, posx, posy, fontsize, color)
-
-drawcirclev(center::Vector2, radius::Float64, color::Color) =
-    ccall((:DrawCircleV, libname), Cvoid, (Vector2, Cfloat, Color), center, radius, color)
-
-drawrectangle(posx::Int, posy::Int, width::Int, height::Int, color::Color) =
-    ccall((:DrawRectangle, libname), Cvoid, (Cint, Cint, Cint, Cint, Color), posx, posy, width, height, color)
- 
-drawrectanglerec(rec::Rectangle, color::Color) =
-    ccall((:DrawRectangleRec, libname), Cvoid, (Rectangle, Color), rec, color)
-
-drawline(startposx::Int, startposy::Int, endposx::Int, endposy::Int, color::Color) =
-    ccall((:DrawLine, libname), Cvoid, (Cint, Cint, Cint, Cint, Color), startposx, startposy, endposx, endposy, color)
-
 fade(color::Color, alpha::Float64)::Color =
     ccall((:Fade, libname), Color, (Color, Cfloat), color, alpha)
-
-drawrectanglelines(posx::Int, posy::Int, width::Int, height::Int, color::Color) =
-    ccall((:DrawRectangleLines, libname), Cvoid, (Cint, Cint, Cint, Cint, Color), posx, posy, width, height, color)

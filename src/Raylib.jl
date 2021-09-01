@@ -2,9 +2,14 @@ module Raylib
 
 # types.jl
 export Vector2
+export Vector3
+export Vector4
 export Color
 export Rectangle
 export Camera2D
+export Camera3D
+export Camera
+export Matrix
 
 export Keys, key_right, key_left, key_up, key_down, key_a, key_r, key_s
 export MouseButtons, mousebutton_left, mousebutton_right, mousebutton_middle, mousebutton_side,
@@ -96,6 +101,7 @@ export endblendmode
 export beginscissormode
 export endscissormode
 
+export getcameramatrix2d
 export getworldtoscreen2d
 export getscreentoworld2d
 
@@ -148,18 +154,21 @@ export setcameraaltcontrol
 export setcamesmoothzoomcontrol
 export setcameramovecontrols
 
+# shapes.jl
 export drawtext
 export drawcirclev
 export drawrectangle
 export drawrectanglerec
 export drawline
-export fade
 export drawrectanglelines
+
+export fade
 
 
 const libname = "libraylib.dylib"
 
 include("types.jl")
 include("core.jl")
+include("shapes.jl")
 
 end # module

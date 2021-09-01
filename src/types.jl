@@ -10,6 +10,19 @@ struct Vector2
     y::Float32
 end
 
+struct Vector3
+    x::Float32
+    y::Float32
+    z::Float32
+end
+
+struct Vector4
+    x::Float32
+    y::Float32
+    z::Float32
+    w::Float32
+end
+
 mutable struct Rectangle
     x::Float32
     y::Float32
@@ -22,6 +35,23 @@ mutable struct Camera2D
     target::Vector2
     rotation::Float32
     zoom::Float32
+end
+
+mutable struct Camera3D
+    position::Vector3
+    target::Vector3
+    up::Vector3
+    fovy::Float32
+    projection::Int
+end
+
+const Camera = Camera3D
+
+struct Matrix
+    m0::Float32; m4::Float32; m8::Float32; m12::Float32 # Matrix first row (4 components)
+    m1::Float32; m5::Float32; m9::Float32; m13::Float32 # Matrix second row (4 components)
+    m2::Float32; m6::Float32; m10::Float32; m14::Float32 # Matrix third row (4 components)
+    m3::Float32; m7::Float32; m11::Float32; m15::Float32 # Matrix fourth row (4 components)
 end
 
 const lightgray = Color(200, 200, 200, 255)
