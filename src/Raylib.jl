@@ -201,6 +201,7 @@ export getcollisionrec
 # text.jl
 export drawtext
 export drawfps
+export measuretext
 
 export fade
 

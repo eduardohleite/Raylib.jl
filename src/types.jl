@@ -27,7 +27,7 @@ mutable struct Rectangle
     x::Float32
     y::Float32
     width::Float32
-    heigth::Float32
+    height::Float32
 end
 
 mutable struct Camera2D
