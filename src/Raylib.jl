@@ -11,7 +11,8 @@ export Camera3D
 export Camera
 export Matrix
 
-export Keys, key_right, key_left, key_up, key_down, key_a, key_r, key_s
+export Keys, key_space, key_escape, key_enter, key_tab, key_backspace, key_insert, key_delete,
+    key_right, key_left, key_up, key_down, key_a, key_r, key_s
 export MouseButtons, mousebutton_left, mousebutton_right, mousebutton_middle, mousebutton_side,
     mousebutton_extra, mousebutton_forward, mousebutton_back
 
@@ -188,6 +189,7 @@ export drawtriangle
 export drawtrianglelines
 export drawpoly
 export drawpolylines
+export drawpolylinesex
 export checkcollisionrecs
 export checkcollisioncircles
 export checkcollisioncirclerec
@@ -196,8 +198,11 @@ export checkcollisionpointcircle
 export checkcollisionpointtriangle
 export getcollisionrec
 
-export fade
+# text.jl
 export drawtext
+export drawfps
+
+export fade
 
 
 const libname = "libraylib.dylib"
@@ -205,5 +210,6 @@ const libname = "libraylib.dylib"
 include("types.jl")
 include("core.jl")
 include("shapes.jl")
+include("text.jl")
 
 end # module

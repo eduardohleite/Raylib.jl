@@ -134,11 +134,19 @@ drawtrianglelines(v1::Vector2, v2::Vector2, v3::Vector2, color::Color) =
     
 # draw regular polygon (Vector version)
 drawpoly(center::Vector2, sides::Int, radius::Float64, rotation::Float64, color::Color) =
-    ccall((:DrawTriangleLines, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Color), center, sides, radius, rotation, color)
+    ccall((:DrawPoly, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Color), center, sides, radius, rotation, color)
 
 # draw a polygon outline of n sides
 drawpolylines(center::Vector2, sides::Int, radius::Float64, rotation::Float64, color::Color) =
-    ccall((:DrawTriangleLines, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Color), center, sides, radius, rotation, color)
+    ccall((:DrawPolyLines, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Color), center, sides, radius, rotation, color)
+
+# draw a polygon outline of n sides with extended parameters
+drawpolylinesex(center::Vector2, sides::Int, radius::Float64, rotation::Float64, linethick::Float64, color::Color) =
+    ccall((:DrawPolyLines, libname), Cvoid, (Vector2, Cint, Cfloat, Cfloat, Cfloat, Color), center, sides, radius, rotation, linethick, color)
+    
+    
+#void DrawPolyLinesEx(Vector2 center, int sides, float radius, float rotation, float lineThick, Color color); // Draw a polygon outline of n sides with extended parameters
+
     
 
 # basic shapes collision detection functions 
@@ -172,11 +180,3 @@ checkcollisionpointtriangle(point::Vector2, p1::Vector2, p2::Vector2, p3::Vector
 # get collision rectangle for two rectangles collision
 getcollisionrec(rec1::Rectangle, rec2::Rectangle)::Rectangle =
     ccall((:CheckCollisionRec, libname), Rectangle, (Rectangle, Rectangle), rec1, rec2)
-
-
-
-
-# -----
-
-drawtext(text::String, posx::Int, posy::Int, fontsize::Int, color::Color) =
-    ccall((:DrawText, libname), Cvoid, (Cstring, Cint, Cint, Cint, Color), text, posx, posy, fontsize, color)

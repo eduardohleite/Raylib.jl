@@ -83,6 +83,13 @@ const magenta = Color(255, 0, 255, 255)
 const raywhite = Color(245, 245, 245, 255)
 
 @enum Keys begin
+    key_space = 32
+    key_escape = 256
+    key_enter = 257
+    key_tab = 258
+    key_backspace = 259
+    key_insert = 260
+    key_delete = 261
     key_right = 262
     key_left = 263
     key_up = 264
