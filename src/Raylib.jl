@@ -15,6 +15,10 @@ export Keys, key_space, key_escape, key_enter, key_tab, key_backspace, key_inser
     key_right, key_left, key_up, key_down, key_a, key_r, key_s
 export MouseButtons, mousebutton_left, mousebutton_right, mousebutton_middle, mousebutton_side,
     mousebutton_extra, mousebutton_forward, mousebutton_back
+export ConfigFlags, flag_vsynchint, flag_fullscreenmode, flag_windowresizable, flag_windowundecorated ,
+    flag_windowhidden, flag_windowminimized, flag_windowmaximized, flag_windowunfocused,
+    flag_windowtopmost, flag_windowalwaysrun, flag_windowtransparent, flag_windowhighspi,
+    flag_msaa4xhint
 
 export lightgray
 export gray

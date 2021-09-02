@@ -109,3 +109,20 @@ end
     mousebutton_forward = 5
     mousebutton_back = 6
 end
+
+@enum ConfigFlags begin
+    flag_vsynchint = 0x00000040
+    flag_fullscreenmode = 0x00000002
+    flag_windowresizable = 0x00000004
+    flag_windowundecorated = 0x00000008
+    flag_windowhidden = 0x00000080
+    flag_windowminimized = 0x00000200
+    flag_windowmaximized = 0x00000400
+    flag_windowunfocused = 0x00000800
+    flag_windowtopmost = 0x00001000
+    flag_windowalwaysrun = 0x00000100
+    flag_windowtransparent = 0x00000010
+    flag_windowhighspi = 0x00002000
+    flag_msaa4xhint = 0x00000020
+    flag_interlacedhint = 0x00010000
+end

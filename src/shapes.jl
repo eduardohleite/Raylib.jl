@@ -24,15 +24,15 @@ drawlinev(startpos::Vector2, endpos::Vector2, color::Color) =
     ccall((:DrawLineV, libname), Cvoid, (Vector2, Vector2, Color), startpos, endpos, color)
 
 # draw a line defining thickness
-drawlineex(startpos::Vector2, endpos::Vector2, thick::Float32, color::Color) =
+drawlineex(startpos::Vector2, endpos::Vector2, thick::Float64, color::Color) =
     ccall((:DrawLineEx, libname), Cvoid, (Vector2, Vector2, Cfloat, Color), startpos, endpos, thick, color)
 
 # draw a line using cubic-bezier curves in-out
-drawlinebezier(startpos::Vector2, endpos::Vector2, thick::Float32, color::Color) =
+drawlinebezier(startpos::Vector2, endpos::Vector2, thick::Float64, color::Color) =
     ccall((:DrawLineBezier, libname), Cvoid, (Vector2, Vector2, Cfloat, Color), startpos, endpos, thick, color)
 
 # draw a line using quadratic bezier curves with a control point
-drawlinebezierquad(startpos::Vector2, endpos::Vector2, controlpos::Vector2, thick::Float32, color::Color) =
+drawlinebezierquad(startpos::Vector2, endpos::Vector2, controlpos::Vector2, thick::Float64, color::Color) =
     ccall((:DrawLineBezierQuad, libname), Cvoid, (Vector2, Vector2, Vector2, Cfloat, Color), startpos, endpos, controlpos, thick, color)
 
 # TODO: void DrawLineStrip(Vector2 *points, int pointsCount, Color color);                                  // Draw lines sequence
@@ -160,7 +160,7 @@ checkcollisioncircles(center1::Vector2, radius1::Float64, center2::Vector2, radi
     ccall((:CheckCollisionCircles, libname), Cint, (Vector2, Cfloat, Vector2, Cfloat), center1, radius1, center2, radius2)
 
 # check collision between circle and rectangle
-checkcollisioncirclerec(center::Vector2, radius::Float32, rec::Rectangle)::Bool =
+checkcollisioncirclerec(center::Vector2, radius::Float64, rec::Rectangle)::Bool =
     ccall((:CheckCollisionCircleRec, libname), Cint, (Vector2, Cfloat, Rectangle), center, radius, rec)
 
 # check if point is inside rectangle
@@ -179,4 +179,4 @@ checkcollisionpointtriangle(point::Vector2, p1::Vector2, p2::Vector2, p3::Vector
 
 # get collision rectangle for two rectangles collision
 getcollisionrec(rec1::Rectangle, rec2::Rectangle)::Rectangle =
-    ccall((:CheckCollisionRec, libname), Rectangle, (Rectangle, Rectangle), rec1, rec2)
+    ccall((:GetCollisionRec, libname), Rectangle, (Rectangle, Rectangle), rec1, rec2)

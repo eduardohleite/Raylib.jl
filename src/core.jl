@@ -307,8 +307,8 @@ takescreenshot(filename::String) =
     ccall((:TakeScreenshot, libname), Cvoid, (Cstring,), filename)
 
 # setup init configuration flags (view FLAGS)
-setconfigflags(flags::UInt) =
-    ccall((:SetConfigFlags, libname), Cvoid, (Cuint,), flags)
+setconfigflags(flags::ConfigFlags) =
+    ccall((:SetConfigFlags, libname), Cvoid, (Cuint,), UInt(flags))
         
 # TODO: void TraceLog(int logLevel, const char *text, ...);                     // Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR)
 # TODO: void SetTraceLogLevel(int logLevel);                                    // Set the current threshold (minimum) log level
